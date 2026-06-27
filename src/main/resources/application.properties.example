@@ -1,0 +1,17 @@
+spring.application.name=api-gateway
+server.port=8080
+
+spring.cloud.gateway.server.webmvc.routes[0].id=user-service
+spring.cloud.gateway.server.webmvc.routes[0].uri=${USER_SERVICE_URL}
+spring.cloud.gateway.server.webmvc.routes[0].predicates[0]=Path=/api/users/**
+spring.cloud.gateway.server.webmvc.routes[0].filters[0]=StripPrefix=1
+
+spring.cloud.gateway.server.webmvc.routes[1].id=product-service
+spring.cloud.gateway.server.webmvc.routes[1].uri=${PRODUCT_SERVICE_URL}
+spring.cloud.gateway.server.webmvc.routes[1].predicates[0]=Path=/api/products/**
+spring.cloud.gateway.server.webmvc.routes[1].filters[0]=StripPrefix=1
+
+spring.cloud.gateway.server.webmvc.routes[2].id=order-service
+spring.cloud.gateway.server.webmvc.routes[2].uri=${ORDER_SERVICE_URL}
+spring.cloud.gateway.server.webmvc.routes[2].predicates[0]=Path=/api/orders/**
+spring.cloud.gateway.server.webmvc.routes[2].filters[0]=StripPrefix=1
